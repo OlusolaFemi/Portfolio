@@ -533,25 +533,176 @@
   .hero-left > *:nth-child(6) { animation-delay: 0.65s; }
   .hero-right { animation: fadeUp 0.9s 0.4s cubic-bezier(0.16,1,0.3,1) both; }
 
-  /* ─── RESPONSIVE ─── */
+  /* ─── RESPONSIVE: TABLET ─── */
   @media (max-width: 1100px) {
+    nav { padding: 20px 36px; }
+    .hero-left { padding: 60px 36px; }
+    .hero-right { padding: 60px 36px; }
+    section { padding: 90px 36px; }
+    #contact { padding: 80px 36px; }
+    footer { padding: 28px 36px; }
     .projects-grid { grid-template-columns: 1fr 1fr; }
     .expertise-grid { grid-template-columns: 1fr 1fr; }
-    .process-row { grid-template-columns: 1fr 1fr; }
-    .process-step { border-right: 1px solid rgba(0,0,0,0.08); border-bottom: 1px solid rgba(0,0,0,0.08); }
+    .process-row { grid-template-columns: 1fr 1fr 1fr; }
+    .process-step {
+      border-right: 1px solid rgba(0,0,0,0.08);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .process-step:nth-child(3) { border-right: none; }
   }
-  @media (max-width: 800px) {
-    nav { padding: 18px 24px; }
+
+  /* ─── RESPONSIVE: MOBILE ─── */
+  @media (max-width: 768px) {
+
+    /* Hide custom cursor on touch */
+    .cursor, .cursor-ring { display: none; }
+    body { cursor: auto; }
+    .btn { cursor: pointer; }
+
+    /* Nav — hamburger feel */
+    nav {
+      padding: 16px 20px;
+      justify-content: space-between;
+    }
+    .nav-logo { font-size: 1.1rem; }
     .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 48px 24px; }
-    section { padding: 70px 24px; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .expertise-grid { grid-template-columns: 1fr; }
-    .process-row { grid-template-columns: 1fr 1fr; }
-    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-    footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: flex; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--gold); transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 0;
+      background: rgba(8,8,8,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--white); text-decoration: none;
+      padding: 20px 0; letter-spacing: 0.04em;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      width: 80%; text-align: center;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* Hero — single column, compact */
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding-top: 56px;
+    }
+    .hero-bg-num { font-size: 45vw; opacity: 0.6; right: -10px; }
+    .hero-left {
+      padding: 48px 20px 40px;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-name { font-size: clamp(2.8rem, 12vw, 4rem); }
+    .hero-role { font-size: 0.95rem; }
+    .hero-bio { font-size: 1rem; margin-bottom: 32px; }
+    .hero-divider { margin: 20px 0; }
+    .hero-cta { flex-direction: column; gap: 12px; }
+    .btn { width: 100%; justify-content: center; padding: 14px 24px; font-size: 0.85rem; }
+
+    /* Show hero-right on mobile but simplified */
+    .hero-right {
+      display: grid !important;
+      padding: 32px 20px;
+      background: var(--card-bg);
+    }
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1px; margin-bottom: 24px;
+    }
+    .stat-box { padding: 22px 16px; }
+    .stat-num { font-size: 2.2rem; }
+    .stat-label { font-size: 0.65rem; }
+    .hero-tags-label { font-size: 0.65rem; margin-bottom: 10px; }
+    .hero-tag { font-size: 0.72rem; padding: 5px 12px; }
+
+    /* Sections */
+    section { padding: 60px 20px; }
+    #contact { padding: 60px 20px; }
+
+    .section-title { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+    .section-subtitle { font-size: 1rem; margin-bottom: 40px; }
+
+    /* Projects — single column */
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 1px;
+    }
+    .project-card { padding: 32px 24px; }
+    .card-num { font-size: 3rem; top: 14px; right: 16px; }
+    .card-title { font-size: 1.1rem; }
+    .card-desc { font-size: 0.92rem; }
+    .outcome-row { font-size: 0.83rem; }
+
+    /* Expertise — single column */
+    .expertise-grid {
+      grid-template-columns: 1fr;
+      gap: 1px;
+    }
+    .exp-card { padding: 32px 24px; }
+
+    /* Process — 2 columns on mobile, single on very small */
+    .process-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    .process-step {
+      padding: 28px 20px;
+      border-right: 1px solid rgba(0,0,0,0.08);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .process-step:nth-child(2n) { border-right: none; }
+    .step-counter { font-size: 2.5rem; }
+    .step-name { font-size: 0.88rem; }
+    .step-text { font-size: 0.82rem; }
+
+    /* Contact */
+    .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .contact-heading { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+    .contact-body { font-size: 0.95rem; margin-bottom: 28px; }
+    .contact-card { padding: 18px 20px; }
+    .contact-card:hover { transform: none; }
+    .contact-info-val { font-size: 0.92rem; }
+
+    /* Footer */
+    footer {
+      padding: 20px;
+      flex-direction: column;
+      gap: 6px;
+      text-align: center;
+    }
+    footer p { font-size: 0.75rem; }
+  }
+
+  /* ─── VERY SMALL SCREENS ─── */
+  @media (max-width: 380px) {
+    .hero-name { font-size: 2.4rem; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat-num { font-size: 1.8rem; }
+    .process-row { grid-template-columns: 1fr; }
+    .process-step { border-right: none; }
+    .project-card { padding: 24px 16px; }
+    section { padding: 48px 16px; }
   }
 </style>
 </head>
@@ -569,7 +720,18 @@
     <li><a href="#process">Process</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#projects" class="mobile-link">Case Studies</a>
+  <a href="#expertise" class="mobile-link">Expertise</a>
+  <a href="#process" class="mobile-link">Process</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -874,14 +1036,14 @@
       </div>
       <h2 class="contact-heading reveal">Let's build something that <em>works</em> — and stays compliant.</h2>
       <p class="contact-body reveal">Open to senior PM roles in risk, compliance, and payments infrastructure across African and global fintech. Especially interested in owning the trust and compliance layer at scale.</p>
-      <a href="mailto:solafemi58@gmail.com" class="btn btn-gold reveal">Send a Message</a>
+      <a href="/cdn-cgi/l/email-protection#daa9b5b6bbbcbfb7b3efe29abdb7bbb3b6f4b9b5b7" class="btn btn-gold reveal">Send a Message</a>
     </div>
     <div class="contact-right reveal">
       <div class="contact-card">
         <span class="contact-icon">✉️</span>
         <div>
           <div class="contact-info-label">Email</div>
-          <div class="contact-info-val">solafemi58@gmail.com</div>
+          <div class="contact-info-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f784989b9691929a9ec2cfb7909a969e9bd994989a">[email&#160;protected]</a></div>
         </div>
       </div>
       <div class="contact-card">
@@ -909,31 +1071,58 @@
 </footer>
 
 <script>
-  // Custom cursor
+  // Custom cursor — desktop only
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animateCursor() {
-    cursor.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
-    requestAnimationFrame(animateCursor);
+  const isTouchDevice = window.matchMedia('(hover: none)').matches;
+  if (!isTouchDevice) {
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animateCursor() {
+      cursor.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
   }
-  animateCursor();
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const toggleSpans = navToggle ? navToggle.querySelectorAll('span') : [];
+
+  if (navToggle) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      if (isOpen) {
+        if (toggleSpans[0]) toggleSpans[0].style.transform = 'rotate(45deg) translate(4.5px, 4.5px)';
+        if (toggleSpans[1]) toggleSpans[1].style.opacity = '0';
+        if (toggleSpans[2]) toggleSpans[2].style.transform = 'rotate(-45deg) translate(4.5px, -4.5px)';
+        document.body.style.overflow = 'hidden';
+      } else {
+        toggleSpans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileMenu) mobileMenu.classList.remove('open');
+      toggleSpans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      document.body.style.overflow = '';
+    });
+  });
+
+  function checkNavToggle() {
+    if (navToggle) navToggle.style.display = window.innerWidth > 768 ? 'none' : 'flex';
+  }
+  checkNavToggle();
+  window.addEventListener('resize', checkNavToggle);
 
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 60);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+    entries.forEach((entry
